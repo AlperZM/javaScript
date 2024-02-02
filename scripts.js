@@ -52,3 +52,13 @@ function rotEnergies(b, jMin, jMax) {
 function rotEnergies(b, j, k) {
   return b < 0 || j > k || j % 1 !== 0 || k % 1 !== 0 ? [] : Array(k - j + 1).fill(0).map((e, i) => b * (j + i) * (j + i + 1));
 }
+
+
+// ------------------ //
+function symDiff(s1, s2){
+  let arr1 = [...s1].filter(f=>![...s2].includes(f));
+  let arr2 = [...s2].filter(f=>![...s1].includes(f));
+return new Set(arr1.concat(arr2))
+}
+// equals to
+const symDiff = (s1, s2) => new Set([...s1, ...s2].filter(x => !s1.has(x) || !s2.has(x)));
